@@ -8,14 +8,32 @@ const movieSelect = document.getElementById('movie')
 // test doing typeOf
 let ticketPrice = +movieSelect.value
 
+// Save selected movie index and price
+function setMovieData(movieIndex, moviePrice) {
+    localStorage.setItem('selectedMovieIndex', movieIndex)
+    localStorage.setItem('selectedMoviePrice', moviePrice)
+}
+
 
 // Update total and count
 function updateSelectedCount() {
     //select all selected seats
     const selectedSeats = document.querySelectorAll('.row .seat.selected')
-    console.log(selectedSeats)
+
+    // Copies the elements of selectedSeats node list into this array
+    // map returns an array
+    // seatsIndex is an array of selected seat indexes             // indexOf returns index of seats selected
+    const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat)
+    )
+    //console.logs a list of all selected seat indexes
+    console.log(seatsIndex)
+
+    localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex))
+
+
+
     const selectedSeatsCount = selectedSeats.length;
-    console.log(selectedSeatsCount)
+
     count.innerText = selectedSeatsCount
     total.innerText = selectedSeatsCount * ticketPrice
 }
@@ -25,6 +43,7 @@ function updateSelectedCount() {
 movieSelect.addEventListener('change', (e) => {
     //+ makes it a number
     ticketPrice = +e.target.value
+    setMovieData(event.target.selectedIndex, e.target.value)
     updateSelectedCount()
 })
 
