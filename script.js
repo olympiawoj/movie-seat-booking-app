@@ -4,6 +4,8 @@ const count = document.getElementById('count')
 const total = document.getElementById('total')
 const movieSelect = document.getElementById('movie')
 
+populateUI()
+
 // +turns string into num, also wrap it in parseInt
 // test doing typeOf
 let ticketPrice = +movieSelect.value
@@ -38,6 +40,31 @@ function updateSelectedCount() {
     total.innerText = selectedSeatsCount * ticketPrice
 }
 
+// Get data from localstorage and populate UI
+function populateUI() {
+    //GET selected seats from local storage
+    //Parse from string to array
+    const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'))
+    //Check to see if any seats in local storage & if length of selectedSeats is greater than 0 
+    if (selectedSeats != null && selectedSeats.length > 0) {
+
+        //If there are selectedSeats, loop through and add selectedClass in UI0
+        seats.forEach((seat, index) => {
+            if (selectedSeats.indexOf(index) > -1) {
+                //index is in selectedSeat array so add class
+                seat.classList.add('selected')
+            }
+        })
+    }
+
+    const selectedMovieIndex = localStorage.getItem('selectedMovieIndex')
+    if (selectedMovieIndex != null) {
+        movieSelect.selectedIndex = selectedMovieIndex
+    }
+
+
+}
+
 // MOVIE SELECT EVENT
 // change event for select
 movieSelect.addEventListener('change', (e) => {
@@ -63,3 +90,9 @@ container.addEventListener('click', (e) => {
         updateSelectedCount()
     }
 })
+
+
+
+// Initial count and total set
+// updateSelectedCount is where our # of seats and price get updated - let's call this on page load
+updateSelectedCount()
