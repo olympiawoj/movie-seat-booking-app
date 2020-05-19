@@ -1,8 +1,8 @@
 # Movie Seat Booking App
 A movie seat booking app built with HTML, CSS, and 🍦vanilla JavaScript
-- Select HTML elements using the DOM document methods
-- Save data to local storage so selected movie and seats information stays on page reload
-- Get data from local storage and populate UI
+- Selected HTML elements using DOM document methods
+- Saved data to local storage so selected movie and seats information stays on page reload
+- Got data from local storage to populate the UI
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@ A movie seat booking app built with HTML, CSS, and 🍦vanilla JavaScript
 ## Getting Started
 
 1. Fork or directly clone this repository to your local machine and `cd` 
-2. Right click on `index.html` and open directly in the browser _or_ with VSCode's Live Sever extension
+2. Right click on `index.html` and open directly in the browser _or_ with VSCode's Live Sever extension. 
 
 
 ## Tech Stack
